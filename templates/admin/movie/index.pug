@@ -1,0 +1,18 @@
+extends ../../home/layout.pug 
+
+block content
+    .container
+        if movie
+            .card.mb-3(style="background-image: url('https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces"+movie.backdrop_path+"');")
+                .row.g-0
+                    .col-md-4
+                        img.img-fluid.rounded-start(src="https://image.tmdb.org/t/p/w500/"+movie.poster_path , alt='...')
+                    .col-md-8
+                        .card-body
+                            h5.title #{movie.title}
+                            p.date #{movie.release_date}
+                            p.Note 
+                                span.notation #{movie.vote_average}
+                            form(method="post")
+                                button.btn.btn-primary Enrigister
+

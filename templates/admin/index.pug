@@ -1,0 +1,20 @@
+extends ../home/layout.pug 
+
+block content
+    .container
+        p ICI on est dans l'admin et on est connecté en tant que #{username}
+        form.d-flex(action="/admin" method='get')
+            label.form-label(for="nameMovie") Titre du film 
+            input#nameMovie.form-control.me-2(type='search', value= nameMovie, name='nameMovie' ,placeholder='Titre du film')
+            button#search.btn.btn-outline-success(type='submit') Search
+        if movies 
+            ul#resultMovies  
+                each movie in movies 
+                    li 
+                        a(href="/admin/movie/"+movie.tmdb_id)
+                            if movie.poster_path
+                                img(src="https://image.tmdb.org/t/p/w500/"+movie.poster_path width="120")
+                            span.title #{movie.title} <br/>
+                            span.date #{movie.release_date}<br/>
+                            span note: 
+                                span.notation #{movie.vote_average}
